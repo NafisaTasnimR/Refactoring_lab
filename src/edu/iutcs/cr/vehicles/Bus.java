@@ -1,6 +1,6 @@
 package edu.iutcs.cr.vehicles;
 
-import java.util.Scanner;
+import edu.iutcs.cr.controller.InputReader;
 
 /**
  * @author Raian Rahman
@@ -20,9 +20,8 @@ public class Bus extends Vehicle {
     }
 
     public void setPassengerCapacity() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter new passenger capacity: ");
-        this.passengerCapacity = scanner.nextInt();
+        this.passengerCapacity = InputReader.getInstance().nextInt();
     }
 
     @Override

@@ -2,8 +2,8 @@ package edu.iutcs.cr.vehicles;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Scanner;
-import edu.iutcs.cr.menu.MenuHelper;
+import edu.iutcs.cr.controller.InputReader;
+import edu.iutcs.cr.controller.ConsoleHelper;
 
 /**
  * @author Raian Rahman
@@ -36,8 +36,7 @@ public class Vehicle implements Serializable {
     }
 
     public void setRegistrationNumber() {
-        Scanner scanner = new Scanner(System.in);
-        this.registrationNumber = MenuHelper.readMandatoryLine(scanner, "registration number");
+        this.registrationNumber = ConsoleHelper.readMandatoryLine("registration number");
     }
 
     public String getMake() {
@@ -45,8 +44,7 @@ public class Vehicle implements Serializable {
     }
 
     public void setMake() {
-        Scanner scanner = new Scanner(System.in);
-        this.make = MenuHelper.readMandatoryLine(scanner, "make");
+        this.make = ConsoleHelper.readMandatoryLine("make");
     }
 
     public String getModel() {
@@ -54,8 +52,7 @@ public class Vehicle implements Serializable {
     }
 
     public void setModel() {
-        Scanner scanner = new Scanner(System.in);
-        this.model = MenuHelper.readMandatoryLine(scanner, "model");
+        this.model = ConsoleHelper.readMandatoryLine("model");
     }
 
     public String getYear() {
@@ -63,8 +60,7 @@ public class Vehicle implements Serializable {
     }
 
     public void setYear() {
-        Scanner scanner = new Scanner(System.in);
-        this.year = MenuHelper.readMandatoryLine(scanner, "year");
+        this.year = ConsoleHelper.readMandatoryLine("year");
     }
 
     public double getPrice() {
@@ -72,9 +68,8 @@ public class Vehicle implements Serializable {
     }
 
     public void setPrice() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter price: ");
-        this.price = scanner.nextDouble();
+        this.price = InputReader.getInstance().nextDouble();
     }
 
     public boolean isAvailable() {

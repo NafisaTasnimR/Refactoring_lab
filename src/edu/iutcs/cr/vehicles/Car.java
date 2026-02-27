@@ -1,6 +1,6 @@
 package edu.iutcs.cr.vehicles;
 
-import java.util.Scanner;
+import edu.iutcs.cr.controller.InputReader;
 
 /**
  * @author Raian Rahman
@@ -20,9 +20,8 @@ public class Car extends Vehicle {
     }
 
     public void setSeatingCapacity() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter new seating capacity: ");
-        this.seatingCapacity = scanner.nextInt();
+        this.seatingCapacity = InputReader.getInstance().nextInt();
     }
 
     @Override

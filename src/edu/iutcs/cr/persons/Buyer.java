@@ -1,6 +1,6 @@
 package edu.iutcs.cr.persons;
 
-import java.util.Scanner;
+import edu.iutcs.cr.controller.InputReader;
 
 /**
  * @author Raian Rahman
@@ -24,9 +24,8 @@ public class Buyer extends Person {
     }
 
     public void setPaymentMethod() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter new payment method:");
-        this.paymentMethod = scanner.nextLine();
+        this.paymentMethod = InputReader.getInstance().nextLine();
     }
 
     @Override

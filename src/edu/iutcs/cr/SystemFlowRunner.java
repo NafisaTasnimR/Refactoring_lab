@@ -1,7 +1,7 @@
 package edu.iutcs.cr;
 
-import edu.iutcs.cr.menu.Command;
-import edu.iutcs.cr.menu.MenuFactory;
+import edu.iutcs.cr.controller.Command;
+import edu.iutcs.cr.controller.ControllerFactory;
 import edu.iutcs.cr.system.SystemDatabase;
 
 import java.util.Map;
@@ -19,7 +19,7 @@ public class SystemFlowRunner {
     private SystemFlowRunner() {
         this.database = SystemDatabase.getInstance();
         this.mainMenu = new MainMenu();
-        this.commands = MenuFactory.buildCommands(database);
+        this.commands = ControllerFactory.buildCommands(database);
     }
 
     public static void run() {

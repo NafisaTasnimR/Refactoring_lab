@@ -1,6 +1,4 @@
-package edu.iutcs.cr.menu;
-
-import java.util.Scanner;
+package edu.iutcs.cr.controller;
 
 /**
  * Shared UI utility for menu navigation.
@@ -8,22 +6,21 @@ import java.util.Scanner;
  * @author Raian Rahman
  * @since 4/19/2024
  */
-public class MenuHelper {
+public class ConsoleHelper {
 
     public static void promptToViewMainMenu() {
         System.out.print("\n\nEnter 0 to view main menu: ");
-        Scanner scanner = new Scanner(System.in);
         int val = -1;
         do {
-            val = scanner.nextInt();
+            val = InputReader.getInstance().nextInt();
         } while (val != 0);
     }
 
-    public static String readMandatoryLine(Scanner scanner, String fieldName) {
+    public static String readMandatoryLine(String fieldName) {
         String value = null;
         while (value == null || value.isBlank()) {
             System.out.print("Enter " + fieldName + ": ");
-            value = scanner.nextLine();
+            value = InputReader.getInstance().nextLine();
             if (value == null || value.isBlank()) {
                 System.out.println(fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1) + " is mandatory!");
             }
@@ -31,6 +28,6 @@ public class MenuHelper {
         return value;
     }
 
-    private MenuHelper() {
+    private ConsoleHelper() {
     }
 }

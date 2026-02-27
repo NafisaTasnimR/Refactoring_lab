@@ -1,4 +1,4 @@
-package edu.iutcs.cr.menu;
+package edu.iutcs.cr.controller;
 
 import edu.iutcs.cr.Invoice;
 import edu.iutcs.cr.ShoppingCart;
@@ -6,38 +6,36 @@ import edu.iutcs.cr.persons.Buyer;
 import edu.iutcs.cr.persons.Seller;
 import edu.iutcs.cr.system.SystemDatabase;
 
-import java.util.Scanner;
-
 /**
  * Handles all invoice-related menu operations.
  *
  * @author Raian Rahman
  * @since 4/19/2024
  */
-public class InvoiceMenu {
+public class InvoiceController {
 
     private final SystemDatabase database;
-    private final BuyerMenu buyerMenu;
-    private final SellerMenu sellerMenu;
+    private final BuyerController buyerController;
+    private final SellerController sellerController;
 
-    public InvoiceMenu(SystemDatabase database, BuyerMenu buyerMenu, SellerMenu sellerMenu) {
+    public InvoiceController(SystemDatabase database, BuyerController buyerController,
+            SellerController sellerController) {
         this.database = database;
-        this.buyerMenu = buyerMenu;
-        this.sellerMenu = sellerMenu;
+        this.buyerController = buyerController;
+        this.sellerController = sellerController;
     }
 
     public void showInvoices() {
         System.out.println("\n\n\nInvoice list");
         database.showInvoices();
-        MenuHelper.promptToViewMainMenu();
+        ConsoleHelper.promptToViewMainMenu();
     }
 
     public void createInvoice(ShoppingCart cart) {
-        Scanner scanner = new Scanner(System.in);
-        Buyer buyer = buyerMenu.promptAndFind();
-        Seller seller = sellerMenu.promptAndFind();
+        Buyer buyer = buyerController.promptAndFind();
+        Seller seller = sellerController.promptAndFind();
         System.out.print("Is payment done (true/false): ");
-        boolean isPaid = scanner.nextBoolean();
+        boolean isPaid = InputReader.getInstance().nextBoolean();
         Invoice invoice = new Invoice(buyer, seller, cart, isPaid);
         invoice.printInvoice();
         database.getInvoices().add(invoice);

@@ -1,6 +1,6 @@
 package edu.iutcs.cr.vehicles;
 
-import java.util.Scanner;
+import edu.iutcs.cr.controller.InputReader;
 
 /**
  * @author Raian Rahman
@@ -20,9 +20,8 @@ public class Sedan extends Vehicle {
     }
 
     public void setHasSunroof() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Does the sedan have a sunroof? (true/false): ");
-        this.hasSunroof = scanner.nextBoolean();
+        this.hasSunroof = InputReader.getInstance().nextBoolean();
     }
 
     @Override

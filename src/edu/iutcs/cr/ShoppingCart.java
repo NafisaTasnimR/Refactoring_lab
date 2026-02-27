@@ -5,8 +5,9 @@ import edu.iutcs.cr.vehicles.Vehicle;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
+
+import edu.iutcs.cr.controller.InputReader;
 
 import static java.util.Objects.isNull;
 
@@ -29,10 +30,8 @@ public class ShoppingCart implements Serializable {
     }
 
     public void addItem() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Enter registration number of vehicle: ");
-        String registrationNumber = scanner.next();
+        String registrationNumber = InputReader.getInstance().next();
 
         Vehicle vehicle = database.findVehicleByRegistrationNumber(registrationNumber);
 
@@ -45,16 +44,15 @@ public class ShoppingCart implements Serializable {
     }
 
     public void removeItem() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the registration number of the vehicle: ");
-        String registrationNumber = scanner.nextLine();
+        String registrationNumber = InputReader.getInstance().nextLine();
         vehicles.remove(new Vehicle(registrationNumber));
     }
 
     public void viewCart() {
         System.out.println("\n\nShopping cart\n\n");
 
-        if(vehicles.isEmpty()) {
+        if (vehicles.isEmpty()) {
             System.out.println("Cart is empty");
             return;
         }

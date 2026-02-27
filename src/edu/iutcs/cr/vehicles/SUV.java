@@ -1,6 +1,6 @@
 package edu.iutcs.cr.vehicles;
 
-import java.util.Scanner;
+import edu.iutcs.cr.controller.InputReader;
 
 /**
  * @author Raian Rahman
@@ -20,9 +20,8 @@ public class SUV extends Vehicle {
     }
 
     public void setOffRoad() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Is the SUV for off-road use? (true/false): ");
-        this.isOffRoad = scanner.nextBoolean();
+        this.isOffRoad = InputReader.getInstance().nextBoolean();
     }
 
     @Override

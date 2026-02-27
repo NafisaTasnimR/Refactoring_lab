@@ -2,8 +2,7 @@ package edu.iutcs.cr.persons;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Scanner;
-import edu.iutcs.cr.menu.MenuHelper;
+import edu.iutcs.cr.controller.ConsoleHelper;
 
 /**
  * @author Raian Rahman
@@ -30,8 +29,7 @@ public class Person implements Serializable {
     }
 
     public void setName() {
-        Scanner scanner = new Scanner(System.in);
-        this.name = MenuHelper.readMandatoryLine(scanner, "name");
+        this.name = ConsoleHelper.readMandatoryLine("name");
     }
 
     public String getId() {
@@ -39,8 +37,7 @@ public class Person implements Serializable {
     }
 
     public void setId() {
-        Scanner scanner = new Scanner(System.in);
-        this.id = MenuHelper.readMandatoryLine(scanner, "id");
+        this.id = ConsoleHelper.readMandatoryLine("id");
     }
 
     public String getEmail() {
@@ -48,8 +45,7 @@ public class Person implements Serializable {
     }
 
     public void setEmail() {
-        Scanner scanner = new Scanner(System.in);
-        this.email = MenuHelper.readMandatoryLine(scanner, "email");
+        this.email = ConsoleHelper.readMandatoryLine("email");
     }
 
     @Override

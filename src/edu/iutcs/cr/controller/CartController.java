@@ -1,10 +1,9 @@
-package edu.iutcs.cr.menu;
+package edu.iutcs.cr.controller;
 
 import edu.iutcs.cr.ShoppingCart;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Handles the shopping cart menu loop.
@@ -12,15 +11,15 @@ import java.util.Scanner;
  * @author Raian Rahman
  * @since 4/19/2024
  */
-public class CartMenu {
+public class CartController {
 
     private final ShoppingCart cart;
     private final Map<Integer, Command> commands;
-    private final InvoiceMenu invoiceMenu;
+    private final InvoiceController invoiceController;
 
-    public CartMenu(InvoiceMenu invoiceMenu) {
+    public CartController(InvoiceController invoiceController) {
         this.cart = new ShoppingCart();
-        this.invoiceMenu = invoiceMenu;
+        this.invoiceController = invoiceController;
         this.commands = new HashMap<>();
         commands.put(1, cart::addItem);
         commands.put(2, cart::removeItem);
@@ -28,20 +27,18 @@ public class CartMenu {
     }
 
     public void run() {
-        Scanner scanner = new Scanner(System.in);
-
         while (true) {
             showCartMenu();
 
-            int selectedOperation = scanner.nextInt();
+            int selectedOperation = InputReader.getInstance().nextInt();
 
             while (selectedOperation < 1 || selectedOperation > 5) {
                 System.out.print("Please select a valid operation: ");
-                selectedOperation = scanner.nextInt();
+                selectedOperation = InputReader.getInstance().nextInt();
             }
 
             if (selectedOperation == 4) {
-                invoiceMenu.createInvoice(cart);
+                invoiceController.createInvoice(cart);
                 return;
             }
 

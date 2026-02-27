@@ -1,4 +1,4 @@
-package edu.iutcs.cr.menu;
+package edu.iutcs.cr.controller;
 
 /**
  * Functional interface representing a single executable menu operation.
